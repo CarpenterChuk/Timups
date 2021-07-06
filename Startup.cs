@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Timups.Data.Interfaces;
+using Timups.Data.Mocks;
 
 namespace Timups
 {
@@ -23,6 +25,8 @@ namespace Timups
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IWatchRepository, MockWatchRepository>();
+            services.AddTransient<ICategoryRepository, MockCategoryRepository>();
             services.AddControllersWithViews();
         }
 
