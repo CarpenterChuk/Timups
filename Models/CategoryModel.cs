@@ -11,6 +11,5 @@ namespace Timups.Models
         public int CategoryName { get; set; }
         public int Description { get; set; }
         public List<WatchModel> Watches { get; set; }
-
     }
 }
