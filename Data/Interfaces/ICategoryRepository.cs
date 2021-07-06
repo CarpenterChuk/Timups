@@ -6,7 +6,7 @@ using Timups.Models;
 
 namespace Timups.Data.Interfaces
 {
-    interface ICategoryRepository
+    public interface ICategoryRepository
     {
         IEnumerable<CategoryModel> Categories { get; }
     }
