@@ -9,15 +9,15 @@ namespace Timups.Data.Mocks
 {
     public class MockCategoryRepository: ICategoryRepository
     {
-        public IEnumerable<CategoryModel> Categories
+        public IEnumerable<Category> Categories
         {
             get
             {
-                return new List<CategoryModel>
+                return new List<Category>
                      {
-                         new CategoryModel { CategoryName = "Smart", Description = "All smart watches" },
-                         new CategoryModel { CategoryName = "Quartz", Description = "All quartz watches" },
-                         new CategoryModel { CategoryName = "Mechanical", Description = "All mechanical watches" }
+                         new Category { CategoryName = "Smart", Description = "All smart watches" },
+                         new Category { CategoryName = "Quartz", Description = "All quartz watches" },
+                         new Category { CategoryName = "Mechanical", Description = "All mechanical watches" }
                      };
             }
         }

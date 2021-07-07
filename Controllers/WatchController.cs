@@ -25,7 +25,7 @@ namespace Timups.Controllers
         {
             WatchListViewModel watchList = new WatchListViewModel();
             watchList.Watches = _watchRepository.Watches;
-            watchList.CurrentCategory = "WatchCategory";
+            watchList.CurrentCategory = "Watch Category";
             return View(watchList);
         }
     }

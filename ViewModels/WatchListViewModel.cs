@@ -8,7 +8,7 @@ namespace Timups.ViewModels
 {
     public class WatchListViewModel
     {
-        public IEnumerable<WatchModel> Watches { get; set; }
+        public IEnumerable<Watch> Watches { get; set; }
         public string CurrentCategory { get; set; }
     }
 }

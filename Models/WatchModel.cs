@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Timups.Models
 {
-    public class WatchModel
+    public class Watch
     {
         public int WatchId { get; set; }
         public string Name { get; set; }
@@ -15,8 +15,8 @@ namespace Timups.Models
         public string ImageUrl { get; set; }
         public string ImageThumbnailUrl { get; set; }
         public bool IsPreferredWatch { get; set; }
-        public int InStock { get; set; }
+        public bool InStock { get; set; }
         public int CategoryId { get; set; }
-        public virtual CategoryModel Category { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

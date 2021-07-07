@@ -8,8 +8,8 @@ namespace Timups.Data.Interfaces
 {
     public interface IWatchRepository
     {
-        IEnumerable<WatchModel> Watches { get; }
-        IEnumerable<WatchModel> PreferredWatches { get; }
-        WatchModel GetWatchById(int watchId);
+        IEnumerable<Watch> Watches { get; }
+        IEnumerable<Watch> PreferredWatches { get; }
+        Watch GetWatchById(int watchId);
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Timups.Data.Interfaces;
-using Timups.Data.Mocks;
+using Timups.Data.Repositories;
+using Timups.Models;
 
 namespace Timups
 {
@@ -25,8 +27,10 @@ namespace Timups
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IWatchRepository, MockWatchRepository>();
-            services.AddTransient<ICategoryRepository, MockCategoryRepository>();
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IWatchRepository, WatchRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddControllersWithViews();
         }
 

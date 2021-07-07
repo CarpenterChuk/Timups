@@ -8,6 +8,6 @@ namespace Timups.Data.Interfaces
 {
     public interface ICategoryRepository
     {
-        IEnumerable<CategoryModel> Categories { get; }
+        IEnumerable<Category> Categories { get; }
     }
 }
