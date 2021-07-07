@@ -1,0 +1,27 @@
+﻿@model Watch
+
+<div class="col-sm-6 col-xl-3">
+    <div class="box">
+        <a href="">
+            <div class="img-box">
+                <img src="~/images/@Model.ImageUrl" alt="">
+            </div>
+            <div class="detail-box">
+                <h6>
+                    @Model.Name
+                </h6>
+                <h6>
+                    Price:
+                    <span>
+                        $@Model.Price
+                    </span>
+                </h6>
+            </div>
+            <div class="new">
+                <span>
+                    New
+                </span>
+            </div>
+        </a>
+    </div>
+</div> 
