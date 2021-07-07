@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Timups.Data.Interfaces;
+using Timups.ViewModels;
 
 namespace Timups.Controllers
 {
@@ -22,8 +23,10 @@ namespace Timups.Controllers
         }        
         public IActionResult List()
         {
-            var watches = _watchRepository.Watches;
-            return View(watches);
+            WatchListViewModel watchList = new WatchListViewModel();
+            watchList.Watches = _watchRepository.Watches;
+            watchList.CurrentCategory = "WatchCategory";
+            return View(watchList);
         }
     }
 }
