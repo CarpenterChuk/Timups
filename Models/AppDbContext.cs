@@ -13,5 +13,6 @@ namespace Timups.Models
         }
         public DbSet<Watch> Watches { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }
