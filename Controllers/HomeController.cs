@@ -5,22 +5,30 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Timups.Data.Interfaces;
 using Timups.Models;
+using Timups.ViewModels;
 
 namespace Timups.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IWatchRepository _watchRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IWatchRepository watchRepository)
         {
             _logger = logger;
+            _watchRepository = watchRepository;
         }
 
-        public IActionResult Index()
+        public ViewResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                PreferredWathes = _watchRepository.PreferredWatches
+            };
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()

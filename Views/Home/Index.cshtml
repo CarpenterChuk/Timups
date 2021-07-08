@@ -2,7 +2,42 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model HomeViewModel
+
+<div class="hero_area">
+    <div class="hero_social">
+        <a href="">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        <a href="">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
+    </div>
+    @await Html.PartialAsync("Header")
+    @await Html.PartialAsync("Carousel")
 </div>
+
+<section class="shop_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>Prefered watches of the week </h2>
+        </div>
+        <div class="row">
+            @foreach (Watch watch in Model.PreferredWathes)
+            {
+                @await Html.PartialAsync("WatchesSummary", watch);
+            }
+        </div>
+        <div class="btn-box">
+            <a href="">
+                View All
+            </a>
+        </div>
+    </div>
+</section>
