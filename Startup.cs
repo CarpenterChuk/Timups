@@ -67,6 +67,10 @@ namespace Timups
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "categoryFilter",
+                    pattern: "Watch/{action}/{category?}",
+                    defaults: new { Controller = "Watch", Action = "List" });
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

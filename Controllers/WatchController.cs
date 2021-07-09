@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Timups.Data.Interfaces;
+using Timups.Models;
 using Timups.ViewModels;
 
 namespace Timups.Controllers
@@ -21,12 +22,46 @@ namespace Timups.Controllers
         {
             return View();
         }        
-        public IActionResult List()
+        public ActionResult List(string category)
         {
-            WatchListViewModel watchList = new WatchListViewModel();
-            watchList.Watches = _watchRepository.Watches;
-            watchList.CurrentCategory = "Watch Category";
-            return View(watchList);
+            string _category = category;
+            IEnumerable<Watch> watches;
+            string currentCategory = string.Empty;
+
+            if (string.IsNullOrEmpty(category))
+            {
+                watches = _watchRepository.Watches.OrderBy(p => p.WatchId);
+                currentCategory = "All watches";
+            }
+            else
+            {
+                if (string.Equals("Smart", _category, StringComparison.OrdinalIgnoreCase))
+                {
+                    watches = _watchRepository.Watches.Where(p => p.Category.CategoryName.Equals("Smart")).OrderBy(p => p.Name);
+                    currentCategory = "Smart watches";
+                }
+                else if (string.Equals("Quartz", _category, StringComparison.OrdinalIgnoreCase))
+                {
+                    watches = _watchRepository.Watches.Where(p => p.Category.CategoryName.Equals("Quartz")).OrderBy(p => p.Name);
+                    currentCategory = "Quartz watches";
+                }
+                else if (string.Equals("Mechanical", _category, StringComparison.OrdinalIgnoreCase))
+                {
+                    watches = _watchRepository.Watches.Where(p => p.Category.CategoryName.Equals("Mechanical")).OrderBy(p => p.Name);
+                    currentCategory = "Mechanical watches";
+                }
+                else
+                {
+                    watches = _watchRepository.Watches.OrderBy(p => p.WatchId);
+                    currentCategory = "All watches";
+                }
+            }
+
+            return View(new WatchListViewModel
+            {
+                Watches = watches,
+                CurrentCategory = currentCategory
+            });
         }
     }
 }
