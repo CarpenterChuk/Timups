@@ -1,4 +1,8 @@
-﻿@await Html.PartialAsync("Header")
+﻿@{
+    ViewData["Title"] = "Watch List Page";
+}
+
+@await Html.PartialAsync("Header")
 <!-- shop section -->
 
 <section class="shop_section layout_padding">
@@ -15,7 +19,7 @@
             }
         </div>
         <div class="btn-box">
-            <a href="">
+            <a asp-controller="Watch" asp-action="List">
                 View All
             </a>
         </div>

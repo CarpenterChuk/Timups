@@ -1,39 +1,50 @@
-﻿@model ShoppingCartViewModel
+﻿@{
+    ViewData["Title"] = "Shopping Cart Page";
+}
 
-<div class="row checkoutForm">
-    <h2>Your shopping cart</h2>
+@model ShoppingCartViewModel
+@await Html.PartialAsync("Header")
+<!-- shopping cart section -->
+<section class="contact_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="row checkoutForm">
+                <h2>Your shopping cart</h2>
 
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Selected amount</th>
-                <th>Watch</th>
-                <th class="text-right">Price</th>
-                <th class="text-right">Subtotal</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
-            {
-                <tr>
-                    <td class="text-center">@line.Amount</td>
-                    <td class="text-left">@line.Watch.Name</td>
-                    <td class="text-right">@line.Watch.Price.ToString("c")</td>
-                    <td class="text-right">
-                        @((line.Amount * line.Watch.Price).ToString("c"))
-                    </td>
-                    <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-drinkId="@line.Watch.WatchId"></a></td>
-                </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3" class="text-right">Total:</td>
-                <td class="text-right">
-                    @Model.ShoppingCartTotal.ToString("c")
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Selected amount</th>
+                            <th>Watch</th>
+                            <th class="text-right">Price</th>
+                            <th class="text-right">Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+                        {
+                            <tr>
+                                <td class="text-center">@line.Amount</td>
+                                <td class="text-left">@line.Watch.Name</td>
+                                <td class="text-right">@line.Watch.Price.ToString("c")</td>
+                                <td class="text-right">
+                                    @((line.Amount * line.Watch.Price).ToString("c"))
+                                </td>
+                                <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-drinkId="@line.Watch.WatchId"></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-right">Total:</td>
+                            <td class="text-right">
+                                @Model.ShoppingCartTotal.ToString("c")
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
