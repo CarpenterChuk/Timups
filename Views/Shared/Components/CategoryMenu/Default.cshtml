@@ -1,15 +1,13 @@
-﻿<div class="dropdown">
-    <div class="dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <a asp-controller="Watch" asp-action="List">Watches</a>
-    </div>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-        @foreach (var category in Model)
-        {
-        <div class="dropdown-item" type="button">
-            <a asp-controller="Watch" asp-action="List"asp-route-category="@category.CategoryName">@category.CategoryName</a>
-        </div>
-        }
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-item" type="button"><a asp-controller="Watch" asp-action="List" asp-route-category="All">View all watches</a></div>
-    </div>
+﻿<a class="nav-link dropdown-toggle" asp-controller="Watch" asp-action="List" asp-route-category="All" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Watches
+</a>
+<div class="dropdown-menu" aria-labelledby="dropdownMenu">
+    @foreach (var category in Model)
+    {
+    <a class="dropdown-item" asp-controller="Watch" asp-action="List" asp-route-category="@category.CategoryName" aria-labelledby="navbarDropdownMenuLink">
+        @category.CategoryName
+    </a>
+    }
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" asp-controller="Watch" asp-action="List" asp-route-category="All">View all watches</a>
 </div>
