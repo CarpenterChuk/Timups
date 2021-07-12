@@ -18,9 +18,9 @@
                 </h6>
             </div>
             <div class="new">
-                <span>
-                    New
-                </span>
+                <a id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-watchId="@Model.WatchId">
+                    <i class="fas fa-cart-plus"></i>
+                </a>
             </div>
         </a>
     </div>

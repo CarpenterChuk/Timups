@@ -1,0 +1,9 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Checkout Page";
+}
+
+@await Html.PartialAsync("Header")
+<h1>
+    @ViewBag.CheckoutCompleteMessage
+</h1>
