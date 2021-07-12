@@ -29,6 +29,7 @@
                 </ul>
                 <div class="user_option-box">
                     <a href="">
+                        @await Html.PartialAsync("LoginPartial")
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                     <a asp-controller="ShoppingCart" asp-action="Index">

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Timups.Models;
 using Timups.Data.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Timups.Controllers
 {
@@ -19,12 +20,14 @@ namespace Timups.Controllers
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
         }
+        [Authorize]
         public IActionResult CheckOut()
         {
             return View();
         }
         
         [HttpPost]
+        [Authorize]
         public IActionResult Checkout(Order order)
         {
             var items = _shoppingCart.GetShoppingCartItems();
